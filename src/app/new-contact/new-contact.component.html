@@ -1,0 +1,81 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-header  text-center ">Nouveau Contact</div>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #contactForm="ngForm" >
+                <div class="mb-3">
+                  <label  class="form-label">Nom</label>
+                  <input type="text" class="form-control" required #nom="ngModel" 
+                  [(ngModel)]="contact.nom"   name="nom" 
+                  [ngClass]="{ 'is-invalid': nom.errors && (nom.dirty || nom.touched) }"
+                  [ngClass]="{ 'is-valid': nom.valid && (nom.dirty || nom.touched) }"
+                  >
+                  <small *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="text-danger ">
+                             nom required </small>
+                  </div>
+                <div class="mb-3">
+                    <label  class="form-label">Prenom</label>
+                    <input type="text" class="form-control"  [(ngModel)]="contact.prenom" 
+                    name="prenom"  required #prenom="ngModel"
+                    [ngClass]="{ 'is-invalid': prenom.errors && (prenom.dirty || prenom.touched) }"
+                    [ngClass]="{ 'is-valid': prenom.valid && (prenom.dirty || prenom.touched) }"  >
+                    <small *ngIf="prenom.invalid && (nom.dirty || prenom.touched)" class="text-danger ">
+                      prenom required </small>
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Date Naissance</label>
+                 <input type="date"   class="form-control" [(ngModel)]="contact.DateNaisssance"
+                     name="DateNaissance" 
+                     required  max="{{this.d}}" #DateNaissance="ngModel"  
+                     [ngClass]="{ 'is-invalid': DateNaissance.errors && (DateNaissance.dirty || DateNaissance.touched) }"
+                     [ngClass]="{ 'is-valid': DateNaissance.valid && (DateNaissance.dirty || DateNaissance.touched) }"
+                     >
+                     <small *ngIf="DateNaissance.invalid && (DateNaissance.dirty || DateNaissance.touched)" class="text-danger ">
+                      date Naissance required </small>
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Email</label>
+                    <input type="email"  class="form-control"  
+                    [(ngModel)]="contact.email" name="email" required #email="ngModel"
+                    [ngClass]="{ 'is-invalid': email.errors && (email.dirty || email.touched) }"
+                    [ngClass]="{ 'is-valid': email.valid && (email.dirty || email.touched) }"
+                    >
+                    <small *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger ">
+                      Email required </small>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Telephone</label>
+                    <input type="text" id="tel" name="tel" class="form-control"
+                    required minlength="8" maxlength="8"
+                    [(ngModel)]="contact.tel" #tel="ngModel"
+                    [ngClass]="{ 'is-invalid': tel.errors && (tel.dirty || tel.touched) }"
+                    [ngClass]="{ 'is-valid': tel.valid && (tel.dirty || tel.touched) }"
+                    >
+              
+                <div *ngIf="tel.invalid && (tel.dirty || tel.touched)"
+                  class="alert">
+              
+                <small *ngIf="tel.errors?.['required'] && (tel.dirty || tel.touched)" class="text-danger">
+                  Tel is required.
+                </small>
+                <small *ngIf="tel.errors?.['minlength']" class="text-danger">
+                  Name must be at least 8 characters long.
+                </small>
+             
+                </div>
+                    </div>
+                   <div class="mb-3">
+                    <label  class="form-label">Photo</label>
+                    <input type="file" class="form-control" 
+                    ngModel name="photo" [(ngModel)]="contact.photo" #photo="ngModel" >
+                  
+                   </div>
+                   
+     
+                <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+
+</div>

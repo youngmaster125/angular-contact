@@ -1,0 +1,48 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-header  text-center ">Nouveau Contact</div>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #contactForm="ngForm" >
+                <div class="mb-3">
+                  <label  class="form-label">Nom</label>
+                  <input type="text" class="form-control" required #nom="ngModel" 
+                  [(ngModel)]="contact.nom"   name="nom">
+                
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Prenom</label>
+                    <input type="text" class="form-control"  [(ngModel)]="contact.prenom" 
+                    name="prenom"  required #prenom="ngModel" >
+                  
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Date Naissance</label>
+                    <input type="date" class="form-control" [(ngModel)]="contact.DateNaisssance"
+                      name="DateNaissance" required  #DateNaissance="ngModel" >
+                  
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Email</label>
+                    <input type="email"  class="form-control"  
+                    [(ngModel)]="contact.email" name="email" required #email="ngModel" >
+                  
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Telephone</label>
+                    <input type="number"  class="form-control"
+                     [(ngModel)]="contact.tel"  name="tel" required #tel="ngModel" >
+                  
+                   </div>
+                   <div class="mb-3">
+                    <label  class="form-label">Photo</label>
+                    <input type="file" class="form-control" 
+                    ngModel name="photo" [(ngModel)]="contact.photo" required #photo="ngModel" >
+                  
+                   </div>
+                <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+
+</div>
